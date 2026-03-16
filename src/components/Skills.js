@@ -1,30 +1,125 @@
-import skillGroups from "@/data/skills";
+'use client';
+
+import { motion } from 'framer-motion';
+import skillGroups from '@/data/skills';
+import ScrollReveal from './ui/ScrollReveal';
+import SectionHeader from './ui/SectionHeader';
+
+function SkillCard({ group, index }) {
+  const colors = ['#00e5ff', '#7c4dff', '#00b8d4'];
+  const color = colors[index % colors.length];
+
+  return (
+    <ScrollReveal delay={index * 0.15}>
+      <motion.div
+        whileHover={{ y: -5 }}
+        className="glass glow-border rounded-xl p-6 group relative overflow-hidden"
+      >
+        {/* Background gradient on hover */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"
+          style={{
+            background: `radial-gradient(circle at top right, ${color}10, transparent 70%)`,
+          }}
+        />
+
+        {/* Icon */}
+        <div
+          className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
+          style={{
+            background: `rgba(${color === '#00e5ff' ? '0, 229, 255' : color === '#7c4dff' ? '124, 77, 255' : '0, 184, 212'}, 0.1)`,
+            color: color,
+            boxShadow: `0 0 20px ${color}20`,
+          }}
+        >
+          <span className="text-2xl">{group.icon}</span>
+        </div>
+
+        {/* Title */}
+        <h3 className="text-lg font-bold text-text mb-4 group-hover:text-primary transition-colors">
+          {group.domain}
+        </h3>
+
+        {/* Skills List */}
+        <ul className="space-y-3">
+          {group.skills.map((skill, i) => (
+            <motion.li
+              key={skill}
+              initial={{ opacity: 0, x: -10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 + i * 0.05 }}
+              className="flex items-start gap-3 text-sm text-text-muted"
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
+                style={{ backgroundColor: color }}
+              />
+              {skill}
+            </motion.li>
+          ))}
+        </ul>
+
+        {/* Bottom accent line */}
+        <div
+          className="absolute bottom-0 left-0 h-0.5 rounded-full transition-all duration-500 group-hover:w-full"
+          style={{
+            width: '0%',
+            background: `linear-gradient(90deg, ${color}, transparent)`,
+          }}
+        />
+      </motion.div>
+    </ScrollReveal>
+  );
+}
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 border-b border-zinc-200 dark:border-zinc-800">
-      <div className="max-w-content mx-auto px-6">
-        <p className="font-mono text-xs font-medium text-accent uppercase tracking-widest mb-3">Capabilities</p>
-        <h2 className="text-[28px] font-bold tracking-tight mb-4">Technical Skills</h2>
-        <p className="text-[15.5px] text-zinc-500 dark:text-zinc-400 max-w-[560px] leading-relaxed">
-          Focused on the full analytics engineering lifecycle — from raw ingestion to decision-ready outputs.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
-          {skillGroups.map((group) => (
-            <div key={group.domain} className="p-7 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-[10px] hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md transition-all">
-              <span className="text-lg text-accent block mb-3.5">{group.icon}</span>
-              <h3 className="text-[15px] font-bold mb-4">{group.domain}</h3>
-              <ul className="space-y-2">
-                {group.skills.map((skill) => (
-                  <li key={skill} className="text-[13.5px] text-zinc-500 dark:text-zinc-400 flex items-start gap-2">
-                    <span className="w-1 h-1 rounded-full bg-accent mt-2 flex-shrink-0" />
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <section id="skills" className="py-24 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="relative z-10 max-w-content mx-auto px-6">
+        <SectionHeader
+          label="Capabilities"
+          title="Technical Skills"
+          description="Full-stack analytics engineering — from raw data ingestion to decision-ready outputs."
+          align="center"
+        />
+
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+          {skillGroups.map((group, index) => (
+            <SkillCard key={group.domain} group={group} index={index} />
           ))}
         </div>
+
+        {/* Additional Tools */}
+        <ScrollReveal delay={0.5}>
+          <div className="mt-16 glass glow-border rounded-xl p-8">
+            <h4 className="text-sm font-medium text-text-muted mb-6 uppercase tracking-wider text-center">Tools & Technologies</h4>
+            <div className="flex flex-wrap justify-center gap-3">
+              {[
+                'Python', 'SQL', 'dbt', 'Apache Airflow', 'AWS', 'Snowflake',
+                'PostgreSQL', 'PySpark', 'Docker', 'Git', 'Looker', 'Tableau',
+                'Pandas', 'NumPy', 'Great Expectations', 'Terraform',
+              ].map((tool, index) => (
+                <motion.span
+                  key={tool}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.6 + index * 0.03 }}
+                  whileHover={{ scale: 1.1 }}
+                  className="px-4 py-2 rounded-full text-sm font-medium bg-background-light border border-border hover:border-primary/50 hover:text-primary transition-all cursor-default"
+                >
+                  {tool}
+                </motion.span>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
