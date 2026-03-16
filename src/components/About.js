@@ -1,4 +1,4 @@
-import profile from "@/data/profile";
+import profile from '@/data/profile';
 
 export default function About() {
   return (
@@ -6,9 +6,7 @@ export default function About() {
       <div className="max-w-content mx-auto px-6">
         <p className="font-mono text-xs font-medium text-accent uppercase tracking-widest mb-3">About</p>
         <h2 className="text-[28px] font-bold tracking-tight mb-4">Background</h2>
-        <p className="text-[16px] text-zinc-500 dark:text-zinc-400 max-w-[640px] leading-[1.8]">
-          {profile.summary}
-        </p>
+        <p className="text-[16px] text-zinc-500 dark:text-zinc-400 max-w-[640px] leading-[1.8]">{profile.summary}</p>
         <div className="grid grid-cols-3 gap-4 md:gap-6 mt-10 max-w-[640px]">
           {profile.stats.map((stat) => (
             <div key={stat.label} className="p-4 md:p-5 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-[10px]">
