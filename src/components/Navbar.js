@@ -8,7 +8,7 @@ export default function Navbar({ darkMode, toggleTheme }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-50/85 dark:bg-zinc-950/85 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
+    <nav className="sticky top-0 z-30 bg-zinc-50/85 dark:bg-zinc-950/85 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800">
       <div className="max-w-content mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="text-[17px] font-bold tracking-tight">
           SK<span className="text-accent">.</span>
