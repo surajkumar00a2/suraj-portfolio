@@ -13,7 +13,7 @@ export default function SectionHeader({ label, title, description, align = 'left
   return (
     <div className={`${alignClasses[align]} max-w-2xl mb-12`}>
       <ScrollReveal>
-        <p className="font-mono text-xs font-medium text-primary uppercase tracking-widest mb-3">
+        <p className="font-mono text-xs font-medium text-[#3b82f6] uppercase tracking-widest mb-3">
           {label}
         </p>
       </ScrollReveal>
@@ -24,7 +24,7 @@ export default function SectionHeader({ label, title, description, align = 'left
       </ScrollReveal>
       {description && (
         <ScrollReveal delay={0.2}>
-          <p className="text-text-muted leading-relaxed">
+          <p className="text-slate-300 leading-relaxed">
             {description}
           </p>
         </ScrollReveal>

@@ -8,41 +8,36 @@ module.exports = {
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
-        // Futuristic Analytics Dashboard Theme
+        // Pure Black + Electric Blue Theme
         background: {
-          DEFAULT: '#0a0f1c',
-          light: '#0d1321',
-          card: '#111827',
+          DEFAULT: '#0a0a0a',
+          light: '#111111',
+          card: '#111111',
         },
         primary: {
-          DEFAULT: '#00e5ff',
-          dark: '#00b8d4',
-          light: '#80f1ff',
-          glow: 'rgba(0, 229, 255, 0.5)',
+          DEFAULT: '#3b82f6',
+          dark: '#2563eb',
+          light: '#60a5fa',
+          glow: 'rgba(59, 130, 246, 0.5)',
         },
         accent: {
-          DEFAULT: '#7c4dff',
-          dark: '#651fff',
-          light: '#b388ff',
-          glow: 'rgba(124, 77, 255, 0.5)',
-          hover: '#651fff',
-          subtle: 'rgba(124, 77, 255, 0.1)',
+          DEFAULT: '#3b82f6',
+          dark: '#1d4ed8',
+          light: '#93c5fd',
+          glow: 'rgba(59, 130, 246, 0.5)',
+          hover: '#2563eb',
+          subtle: 'rgba(59, 130, 246, 0.1)',
         },
         text: {
-          DEFAULT: '#e0f7fa',
+          DEFAULT: '#ffffff',
+          body: '#cbd5e1',
           muted: '#94a3b8',
           dark: '#64748b',
         },
         border: {
-          DEFAULT: 'rgba(0, 229, 255, 0.2)',
-          glow: 'rgba(0, 229, 255, 0.4)',
-          accent: 'rgba(124, 77, 255, 0.3)',
-        },
-        // Legacy colors for compatibility
-        accent: {
-          DEFAULT: '#00e5ff',
-          hover: '#00b8d4',
-          subtle: 'rgba(0, 229, 255, 0.1)',
+          DEFAULT: 'rgba(59, 130, 246, 0.2)',
+          glow: 'rgba(59, 130, 246, 0.4)',
+          accent: 'rgba(59, 130, 246, 0.3)',
         },
       },
       maxWidth: {
@@ -62,8 +57,8 @@ module.exports = {
       },
       keyframes: {
         'pulse-glow': {
-          '0%, 100%': { boxShadow: '0 0 20px rgba(0, 229, 255, 0.3)' },
-          '50%': { boxShadow: '0 0 40px rgba(0, 229, 255, 0.6)' },
+          '0%, 100%': { boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)' },
+          '50%': { boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)' },
         },
         'float': {
           '0%, 100%': { transform: 'translateY(0px)' },
@@ -83,16 +78,16 @@ module.exports = {
         },
       },
       backgroundImage: {
-        'grid-pattern': "linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px)",
+        'grid-pattern': "linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px)",
         'gradient-radial': 'radial-gradient(ellipse at center, var(--tw-gradient-stops))',
-        'glow-conic': 'conic-gradient(from 180deg at 50% 50%, #00e5ff 0deg, #7c4dff 180deg, #00e5ff 360deg)',
+        'glow-conic': 'conic-gradient(from 180deg at 50% 50%, #3b82f6 0deg, #1d4ed8 180deg, #3b82f6 360deg)',
       },
       boxShadow: {
-        'glow': '0 0 20px rgba(0, 229, 255, 0.3)',
-        'glow-lg': '0 0 40px rgba(0, 229, 255, 0.4)',
-        'glow-accent': '0 0 20px rgba(124, 77, 255, 0.3)',
-        'glow-accent-lg': '0 0 40px rgba(124, 77, 255, 0.4)',
-        'inner-glow': 'inset 0 0 20px rgba(0, 229, 255, 0.1)',
+        'glow': '0 0 20px rgba(59, 130, 246, 0.3)',
+        'glow-lg': '0 0 40px rgba(59, 130, 246, 0.4)',
+        'glow-accent': '0 0 20px rgba(59, 130, 246, 0.3)',
+        'glow-accent-lg': '0 0 40px rgba(59, 130, 246, 0.4)',
+        'inner-glow': 'inset 0 0 20px rgba(59, 130, 246, 0.1)',
       },
     },
   },

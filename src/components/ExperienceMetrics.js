@@ -55,49 +55,49 @@ const metrics = [
     value: '3',
     suffix: '+',
     label: 'Years Experience',
-    description: 'Building production data systems',
+    description: 'At MapUp Inc. (TollGuru), California — B2B SaaS toll intelligence platform',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    color: '#00e5ff',
+    color: '#3b82f6',
   },
   {
     value: '15',
     suffix: '+',
-    label: 'Data Workflows',
-    description: 'Production ETL pipelines',
+    label: 'ETL Pipelines',
+    description: 'Production pipelines across 29 European markets',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
       </svg>
     ),
-    color: '#7c4dff',
+    color: '#2563eb',
   },
   {
-    value: '10',
-    suffix: 'M+',
-    label: 'Rows Processed',
-    description: 'Daily data volume handled',
+    value: '500',
+    suffix: '+',
+    label: 'Data Sources',
+    description: 'Government portals, PDFs, REST APIs across 29 countries',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
       </svg>
     ),
-    color: '#00e5ff',
+    color: '#3b82f6',
   },
   {
-    value: '100',
-    suffix: '+',
-    label: 'Hours Automated',
-    description: 'Manual processes eliminated',
+    value: '99.2',
+    suffix: '%',
+    label: 'AWS Uptime',
+    description: 'Lambda, S3, CloudWatch infrastructure maintained',
     icon: (
       <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
       </svg>
     ),
-    color: '#7c4dff',
+    color: '#2563eb',
   },
 ];
 
@@ -118,7 +118,7 @@ function MetricCard({ metric, index }) {
         <div
           className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
           style={{
-            background: `rgba(${metric.color === '#00e5ff' ? '0, 229, 255' : '124, 77, 255'}, 0.1)`,
+            background: `rgba(59, 130, 246, 0.1)`,
             color: metric.color,
           }}
         >
@@ -133,12 +133,12 @@ function MetricCard({ metric, index }) {
         </div>
 
         {/* Label */}
-        <div className="text-lg font-semibold text-text mb-1">
+        <div className="text-lg font-semibold text-slate-200 mb-1">
           {metric.label}
         </div>
 
         {/* Description */}
-        <div className="text-sm text-text-muted">
+        <div className="text-sm text-slate-400">
           {metric.description}
         </div>
 
@@ -157,7 +157,7 @@ function MetricCard({ metric, index }) {
 
 export default function ExperienceMetrics() {
   return (
-    <section id="metrics" className="py-24 relative overflow-hidden">
+    <section id="metrics" className="py-16 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[150px]" />
@@ -187,8 +187,8 @@ export default function ExperienceMetrics() {
           ].map((item, index) => (
             <ScrollReveal key={item.label} delay={0.6 + index * 0.1}>
               <div className="glass glow-border rounded-lg p-4 text-center">
-                <div className="text-xs text-text-muted uppercase tracking-wider mb-1">{item.label}</div>
-                <div className="text-sm font-semibold text-text">{item.value}</div>
+                <div className="text-xs text-slate-400 uppercase tracking-wider mb-1">{item.label}</div>
+                <div className="text-sm font-semibold text-slate-200">{item.value}</div>
               </div>
             </ScrollReveal>
           ))}

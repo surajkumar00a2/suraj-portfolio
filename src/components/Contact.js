@@ -19,7 +19,7 @@ const links = [
   {
     icon: (
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
       </svg>
     ),
     label: 'LinkedIn',
@@ -40,7 +40,7 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden">
+    <section id="contact" className="py-16 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]" />
@@ -76,7 +76,7 @@ export default function Contact() {
               href={`mailto:${profile.email}`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg glass glow-border text-text font-semibold hover:border-primary/50 transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg glass glow-border text-slate-100 font-semibold hover:border-primary/50 transition-all"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -102,8 +102,8 @@ export default function Contact() {
                   {link.icon}
                 </div>
                 <div>
-                  <div className="text-xs text-text-muted uppercase tracking-wider">{link.label}</div>
-                  <div className="text-sm font-semibold text-text group-hover:text-primary transition-colors">{link.value}</div>
+                  <div className="text-xs text-slate-400 uppercase tracking-wider">{link.label}</div>
+                  <div className="text-sm font-semibold text-slate-100 group-hover:text-primary transition-colors">{link.value}</div>
                 </div>
               </motion.a>
             </ScrollReveal>

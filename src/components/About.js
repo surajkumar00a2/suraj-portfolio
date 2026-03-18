@@ -8,13 +8,13 @@ import SectionHeader from './ui/SectionHeader';
 const stats = [
   { value: '3+', label: 'Years', sublabel: 'Experience' },
   { value: '15+', label: 'Production', sublabel: 'Pipelines' },
+  { value: '500+', label: 'Data', sublabel: 'Sources' },
   { value: '29', label: 'European', sublabel: 'Markets' },
-  { value: '99.9%', label: 'Pipeline', sublabel: 'Uptime' },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden">
+    <section id="about" className="py-16 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-accent/5 rounded-full blur-[120px]" />
@@ -33,7 +33,7 @@ export default function About() {
             {/* Skills Tags */}
             <ScrollReveal delay={0.3}>
               <div className="mt-8">
-                <h4 className="text-sm font-medium text-text-muted mb-4 uppercase tracking-wider">Core Expertise</h4>
+                <h4 className="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wider">Core Expertise</h4>
                 <div className="flex flex-wrap gap-2">
                   {[
                     'ETL/ELT Pipelines',
@@ -70,8 +70,8 @@ export default function About() {
                   <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-sm font-medium text-text">{stat.label}</div>
-                  <div className="text-xs text-text-muted">{stat.sublabel}</div>
+                  <div className="text-sm font-medium text-slate-300">{stat.label}</div>
+                  <div className="text-xs text-slate-400">{stat.sublabel}</div>
 
                   {/* Hover glow effect */}
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity -z-10" />

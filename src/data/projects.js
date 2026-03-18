@@ -3,7 +3,7 @@ const projects = [
     id: 1,
     title: "Enterprise Revenue Intelligence Platform",
     description:
-      "Production revenue analytics platform on £10.3M of retail transactions. Identified £442K in pricing variance (4.3% of revenue) using statistical anomaly detection across 541,909 transactions.",
+      "Production-grade revenue analytics warehouse on 541,909 transactions. Star schema with 3 fact tables, 5 dimension tables, Type 2 SCD. dbt pipeline with 7 models, full test coverage, and 3-method forecasting (rolling average, regression, churn-adjusted) across 4 live dashboards.",
     stack: ["PostgreSQL", "dbt", "Python", "Looker Studio", "Supabase"],
     achievements: [
       "Z-score price anomaly detection across 33,532 flagged transactions",
@@ -19,9 +19,9 @@ const projects = [
   },
   {
     id: 2,
-    title: "Weather Data Platform with Quality Monitoring",
+    title: "Serverless Weather Data Platform",
     description:
-      "Serverless data lake on AWS with continuous data quality monitoring at ingestion time. Detects schema drift and anomalies before dashboards break.",
+      "Bronze-Silver-Gold medallion architecture on AWS serverless. Real-time schema drift detection, anomaly monitoring, and 99%+ pipeline reliability at under $2/month with IAM-enforced security policies.",
     stack: ["Python", "AWS Lambda", "S3", "Glue", "Athena", "CloudWatch"],
     achievements: [
       "Bronze → Silver → Gold ETL architecture",

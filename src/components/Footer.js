@@ -16,9 +16,9 @@ export default function Footer() {
             viewport={{ once: true }}
             className="flex items-center gap-2"
           >
-            <span className="text-lg font-bold text-text">SK</span>
+            <span className="text-lg font-bold text-slate-100">SK</span>
             <span className="text-primary">.</span>
-            <span className="text-text-muted text-sm">Analytics Engineer</span>
+            <span className="text-slate-400 text-sm">Analytics Engineer</span>
           </motion.div>
 
           {/* Copyright */}
@@ -27,7 +27,7 @@ export default function Footer() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-sm text-text-muted"
+            className="text-sm text-slate-400"
           >
             © {currentYear} Suraj Kumar — Built with precision.
           </motion.p>
@@ -40,7 +40,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             whileHover={{ y: -2 }}
-            className="flex items-center gap-2 text-sm text-text-muted hover:text-primary transition-colors"
+            className="flex items-center gap-2 text-sm text-slate-400 hover:text-primary transition-colors"
           >
             Back to top
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

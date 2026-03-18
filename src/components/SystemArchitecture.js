@@ -87,8 +87,8 @@ function ArchitectureCard({ architecture, index }) {
                 {architecture.icon}
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-text">{architecture.title}</h3>
-                <p className="text-sm text-text-muted">{architecture.description}</p>
+                <h3 className="text-lg font-semibold text-slate-200">{architecture.title}</h3>
+                <p className="text-sm text-slate-400">{architecture.description}</p>
               </div>
             </div>
             <motion.div
@@ -105,7 +105,7 @@ function ArchitectureCard({ architecture, index }) {
           <div className="flex gap-4 text-xs">
             {Object.entries(architecture.metrics).map(([key, value]) => (
               <div key={key} className="px-3 py-1 rounded-full bg-background-light border border-border">
-                <span className="text-text-muted capitalize">{key}: </span>
+                <span className="text-slate-400 capitalize">{key}: </span>
                 <span className="text-primary font-medium">{value}</span>
               </div>
             ))}
@@ -125,7 +125,7 @@ function ArchitectureCard({ architecture, index }) {
               <div className="p-6 space-y-6">
                 {/* Pipeline Stages */}
                 <div>
-                  <h4 className="text-sm font-medium text-text-muted mb-4 uppercase tracking-wider">Pipeline Flow</h4>
+                  <h4 className="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wider">Pipeline Flow</h4>
                   <div className="flex flex-wrap items-center gap-2">
                     {architecture.stages.map((stage, i) => (
                       <div key={stage.name} className="flex items-center">
@@ -138,8 +138,8 @@ function ArchitectureCard({ architecture, index }) {
                           <div className="flex items-center gap-2">
                             <span>{stage.icon}</span>
                             <div>
-                              <div className="text-sm font-medium text-text">{stage.name}</div>
-                              <div className="text-xs text-text-muted">{stage.details}</div>
+                              <div className="text-sm font-medium text-slate-200">{stage.name}</div>
+                              <div className="text-xs text-slate-400">{stage.details}</div>
                             </div>
                           </div>
                         </motion.div>
@@ -155,7 +155,7 @@ function ArchitectureCard({ architecture, index }) {
 
                 {/* Tools */}
                 <div>
-                  <h4 className="text-sm font-medium text-text-muted mb-3 uppercase tracking-wider">Tech Stack</h4>
+                  <h4 className="text-sm font-medium text-slate-400 mb-3 uppercase tracking-wider">Tech Stack</h4>
                   <div className="flex flex-wrap gap-2">
                     {architecture.tools.map((tool) => (
                       <span
@@ -178,7 +178,7 @@ function ArchitectureCard({ architecture, index }) {
 
 export default function SystemArchitecture() {
   return (
-    <section id="architecture" className="py-24 relative overflow-hidden">
+    <section id="architecture" className="py-16 relative overflow-hidden">
       <div className="relative z-10 max-w-content mx-auto px-6">
         <SectionHeader
           label="System Design"

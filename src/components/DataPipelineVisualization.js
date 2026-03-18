@@ -14,7 +14,7 @@ const pipelineStages = [
       </svg>
     ),
     tech: ['REST APIs', 'Selenium', 'Requests'],
-    color: '#00e5ff',
+    color: '#3b82f6',
   },
   {
     id: 'streaming',
@@ -25,7 +25,7 @@ const pipelineStages = [
       </svg>
     ),
     tech: ['Apache Kafka', 'Kinesis', 'EventBridge'],
-    color: '#7c4dff',
+    color: '#2563eb',
   },
   {
     id: 'storage',
@@ -36,7 +36,7 @@ const pipelineStages = [
       </svg>
     ),
     tech: ['S3', 'Delta Lake', 'Parquet'],
-    color: '#00e5ff',
+    color: '#3b82f6',
   },
   {
     id: 'processing',
@@ -47,7 +47,7 @@ const pipelineStages = [
       </svg>
     ),
     tech: ['PySpark', 'AWS Glue', 'EMR'],
-    color: '#7c4dff',
+    color: '#2563eb',
   },
   {
     id: 'warehouse',
@@ -58,7 +58,7 @@ const pipelineStages = [
       </svg>
     ),
     tech: ['Snowflake', 'Athena', 'PostgreSQL'],
-    color: '#00e5ff',
+    color: '#3b82f6',
   },
   {
     id: 'analytics',
@@ -69,7 +69,7 @@ const pipelineStages = [
       </svg>
     ),
     tech: ['Looker', 'Tableau', 'Streamlit'],
-    color: '#7c4dff',
+    color: '#2563eb',
   },
 ];
 
@@ -83,19 +83,19 @@ function PipelineNode({ stage, index }) {
         <div
           className="w-12 h-12 rounded-lg flex items-center justify-center mb-3 mx-auto transition-all duration-300"
           style={{
-            background: `rgba(${stage.color === '#00e5ff' ? '0, 229, 255' : '124, 77, 255'}, 0.1)`,
+            background: `rgba(59, 130, 246, 0.1)`,
             color: stage.color,
             boxShadow: `0 0 20px ${stage.color}20`,
           }}
         >
           {stage.icon}
         </div>
-        <h3 className="text-sm font-semibold text-text mb-2">{stage.title}</h3>
+        <h3 className="text-sm font-semibold text-slate-200 mb-2">{stage.title}</h3>
         <div className="flex flex-wrap justify-center gap-1">
           {stage.tech.map((tech) => (
             <span
               key={tech}
-              className="text-[10px] px-2 py-0.5 rounded-full bg-background-light text-text-muted border border-border"
+              className="text-[10px] px-2 py-0.5 rounded-full bg-background-light text-slate-400 border border-border"
             >
               {tech}
             </span>
@@ -140,7 +140,7 @@ function DataFlowArrow({ index }) {
 
 export default function DataPipelineVisualization() {
   return (
-    <section id="pipeline" className="py-24 relative overflow-hidden">
+    <section id="pipeline" className="py-16 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[100px]" />
@@ -205,7 +205,7 @@ export default function DataPipelineVisualization() {
               <ScrollReveal key={stat.label} delay={0.5 + index * 0.1}>
                 <div className="glass glow-border rounded-lg p-4 text-center">
                   <div className="text-2xl font-bold gradient-text">{stat.value}</div>
-                  <div className="text-sm text-text-muted">{stat.label}</div>
+                  <div className="text-sm text-slate-400">{stat.label}</div>
                 </div>
               </ScrollReveal>
             ))}

@@ -22,9 +22,13 @@ const skillGroups = [
     ],
   },
   {
-    domain: "Analytics & Product",
+    domain: "Data Acquisition & Automation",
     icon: "◇",
     skills: [
+      "Web Scraping (BeautifulSoup, Selenium)",
+      "Government Portals & PDFs",
+      "REST APIs",
+      "500+ Sources automated",
       "Advanced SQL (CTEs, window functions)",
       "Revenue leakage & anomaly detection",
       "Statistical analysis (scipy, Z-score)",

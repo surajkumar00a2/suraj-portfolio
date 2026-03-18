@@ -54,7 +54,7 @@ export default function TerminalTyping({ lines, typingSpeed = 50, lineDelay = 80
         <div className="terminal-dot red" />
         <div className="terminal-dot yellow" />
         <div className="terminal-dot green" />
-        <span className="ml-2 text-xs text-text-muted font-mono">analytics-terminal</span>
+        <span className="ml-2 text-xs text-slate-400 font-mono">analytics-terminal</span>
       </div>
       <div className="terminal-body">
         {displayedLines.map((line, index) => (
@@ -66,7 +66,7 @@ export default function TerminalTyping({ lines, typingSpeed = 50, lineDelay = 80
             className="terminal-line mb-1"
           >
             <span className="terminal-prompt">&gt;</span>
-            <span className="text-text">{line}</span>
+            <span className="text-slate-300">{line}</span>
             {index === displayedLines.length - 1 && currentLineIndex < lines.length && (
               <span
                 className="terminal-cursor"

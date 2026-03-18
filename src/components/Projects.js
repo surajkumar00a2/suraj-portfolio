@@ -27,9 +27,9 @@ const generateChartData = (points = 7) => {
 };
 
 const chartColors = {
-  primary: '#00e5ff',
-  accent: '#7c4dff',
-  grid: 'rgba(0, 229, 255, 0.1)',
+  primary: '#3b82f6',
+  accent: '#2563eb',
+  grid: 'rgba(59, 130, 246, 0.1)',
 };
 
 function MiniChart({ type = 'line', color = chartColors.primary }) {
@@ -53,8 +53,8 @@ function MiniChart({ type = 'line', color = chartColors.primary }) {
           <YAxis hide />
           <Tooltip
             contentStyle={{
-              backgroundColor: '#111827',
-              border: '1px solid rgba(0, 229, 255, 0.2)',
+              backgroundColor: '#111111',
+              border: '1px solid rgba(59, 130, 246, 0.2)',
               borderRadius: '8px',
               fontSize: '12px',
             }}
@@ -95,14 +95,14 @@ function ProjectModal({ project, onClose }) {
           <div className="p-6 border-b border-border">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="text-2xl font-bold text-text mb-2">{project.title}</h3>
-                <p className="text-text-muted">{project.description}</p>
+                <h3 className="text-2xl font-bold text-slate-100 mb-2">{project.title}</h3>
+                <p className="text-slate-300">{project.description}</p>
               </div>
               <button
                 onClick={onClose}
                 className="p-2 rounded-lg hover:bg-background-light transition-colors"
               >
-                <svg className="w-5 h-5 text-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -113,7 +113,7 @@ function ProjectModal({ project, onClose }) {
           <div className="p-6 space-y-6">
             {/* Architecture Diagram Placeholder */}
             <div className="glass rounded-xl p-6">
-              <h4 className="text-sm font-medium text-text-muted mb-4 uppercase tracking-wider">Pipeline Architecture</h4>
+              <h4 className="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wider">Pipeline Architecture</h4>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 {['Source', 'Ingest', 'Transform', 'Store', 'Serve'].map((stage, i) => (
                   <div key={stage} className="flex items-center">
@@ -132,7 +132,7 @@ function ProjectModal({ project, onClose }) {
 
             {/* Tech Stack */}
             <div>
-              <h4 className="text-sm font-medium text-text-muted mb-3 uppercase tracking-wider">Technologies</h4>
+              <h4 className="text-sm font-medium text-slate-400 mb-3 uppercase tracking-wider">Technologies</h4>
               <div className="flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
                   <span
@@ -147,10 +147,10 @@ function ProjectModal({ project, onClose }) {
 
             {/* Key Achievements */}
             <div>
-              <h4 className="text-sm font-medium text-text-muted mb-3 uppercase tracking-wider">Key Achievements</h4>
+              <h4 className="text-sm font-medium text-slate-400 mb-3 uppercase tracking-wider">Key Achievements</h4>
               <ul className="space-y-2">
                 {project.achievements.map((achievement, i) => (
-                  <li key={i} className="flex items-start gap-2 text-text">
+                  <li key={i} className="flex items-start gap-2 text-slate-300">
                     <span className="text-primary mt-1">↳</span>
                     {achievement}
                   </li>
@@ -177,7 +177,7 @@ function ProjectModal({ project, onClose }) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg glass glow-border text-text font-semibold hover:border-primary/50 transition-all ${
+                className={`inline-flex items-center justify-center gap-2 px-4 py-3 rounded-lg glass glow-border text-slate-100 font-semibold hover:border-primary/50 transition-all ${
                   project.liveDashboard ? 'flex-1' : 'w-full'
                 }`}
               >
@@ -215,10 +215,10 @@ function ProjectCard({ project, index }) {
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h3 className="text-lg font-bold text-text group-hover:text-primary transition-colors">
+              <h3 className="text-lg font-bold text-slate-100 group-hover:text-primary transition-colors">
                 {project.title}
               </h3>
-              <p className="text-sm text-text-muted mt-1 line-clamp-2">{project.description}</p>
+              <p className="text-sm text-slate-300 mt-1 line-clamp-2">{project.description}</p>
             </div>
             <div className="flex gap-2">
               {project.liveDashboard && (
@@ -232,15 +232,15 @@ function ProjectCard({ project, index }) {
           {/* Metrics Row */}
           <div className="grid grid-cols-3 gap-3 mb-4">
             <div className="glass rounded-lg p-2 text-center">
-              <div className="text-xs text-text-muted">Rows</div>
+              <div className="text-xs text-slate-400">Rows</div>
               <div className="text-sm font-semibold text-primary">{metrics.rowsProcessed}</div>
             </div>
             <div className="glass rounded-lg p-2 text-center">
-              <div className="text-xs text-text-muted">Latency</div>
+              <div className="text-xs text-slate-400">Latency</div>
               <div className="text-sm font-semibold text-accent">{metrics.latency}</div>
             </div>
             <div className="glass rounded-lg p-2 text-center">
-              <div className="text-xs text-text-muted">Uptime</div>
+              <div className="text-xs text-slate-400">Uptime</div>
               <div className="text-sm font-semibold text-emerald-400">{metrics.reliability}</div>
             </div>
           </div>
@@ -255,13 +255,13 @@ function ProjectCard({ project, index }) {
             {project.stack.slice(0, 4).map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 rounded text-[10px] font-mono bg-background-light text-text-muted border border-border"
+                className="px-2 py-0.5 rounded text-[10px] font-mono bg-background-light text-slate-400 border border-border"
               >
                 {tech}
               </span>
             ))}
             {project.stack.length > 4 && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-background-light text-text-muted border border-border"
+              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-background-light text-slate-400 border border-border"
               >
                 +{project.stack.length - 4}
               </span>
@@ -282,7 +282,7 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 relative overflow-hidden">
+    <section id="projects" className="py-16 relative overflow-hidden">
       <div className="relative z-10 max-w-content mx-auto px-6">
         <SectionHeader
           label="Portfolio"

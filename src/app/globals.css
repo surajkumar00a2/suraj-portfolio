@@ -6,16 +6,18 @@
 
 
 :root {
-  --background: #0a0f1c;
-  --background-light: #0d1321;
-  --background-card: #111827;
-  --primary: #00e5ff;
-  --primary-dark: #00b8d4;
-  --accent: #7c4dff;
-  --accent-dark: #651fff;
-  --text: #e0f7fa;
+  --background: #0a0a0a;
+  --background-light: #111111;
+  --background-card: #111111;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --accent: #3b82f6;
+  --accent-dark: #1d4ed8;
+  --text: #ffffff;
+  --text-body: #cbd5e1;
   --text-muted: #94a3b8;
-  --border-glow: rgba(0, 229, 255, 0.2);
+  --text-highlight: #3b82f6;
+  --border-glow: rgba(59, 130, 246, 0.2);
 }
 
 html {
@@ -25,20 +27,32 @@ html {
 
 body {
   background-color: var(--background);
-  color: var(--text);
+  color: var(--text-body);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+p, li {
+  color: var(--text-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text);
+}
+
+.text-highlight {
+  color: var(--text-highlight);
+}
+
 ::selection {
-  background-color: var(--primary);
-  color: var(--background);
+  background-color: #3b82f6;
+  color: #ffffff;
 }
 
 /* Animated Grid Background */
 .animated-grid {
   background-image:
-    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: grid-flow 20s linear infinite;
 }
@@ -50,61 +64,61 @@ body {
 
 /* Glassmorphism */
 .glass {
-  background: rgba(17, 24, 39, 0.7);
+  background: rgba(17, 17, 17, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 229, 255, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.1);
 }
 
 .glass-strong {
-  background: rgba(17, 24, 39, 0.85);
+  background: rgba(17, 17, 17, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.15);
 }
 
 /* Glowing Borders */
 .glow-border {
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   box-shadow:
-    0 0 20px rgba(0, 229, 255, 0.1),
-    inset 0 0 20px rgba(0, 229, 255, 0.05);
+    0 0 20px rgba(59, 130, 246, 0.1),
+    inset 0 0 20px rgba(59, 130, 246, 0.05);
   transition: all 0.3s ease;
 }
 
 .glow-border:hover {
-  border-color: rgba(0, 229, 255, 0.4);
+  border-color: rgba(59, 130, 246, 0.4);
   box-shadow:
-    0 0 30px rgba(0, 229, 255, 0.2),
-    inset 0 0 30px rgba(0, 229, 255, 0.1);
+    0 0 30px rgba(59, 130, 246, 0.2),
+    inset 0 0 30px rgba(59, 130, 246, 0.1);
 }
 
 .glow-border-accent {
-  border: 1px solid rgba(124, 77, 255, 0.2);
+  border: 1px solid rgba(29, 78, 216, 0.2);
   box-shadow:
-    0 0 20px rgba(124, 77, 255, 0.1),
-    inset 0 0 20px rgba(124, 77, 255, 0.05);
+    0 0 20px rgba(29, 78, 216, 0.1),
+    inset 0 0 20px rgba(29, 78, 216, 0.05);
   transition: all 0.3s ease;
 }
 
 .glow-border-accent:hover {
-  border-color: rgba(124, 77, 255, 0.4);
+  border-color: rgba(29, 78, 216, 0.4);
   box-shadow:
-    0 0 30px rgba(124, 77, 255, 0.2),
-    inset 0 0 30px rgba(124, 77, 255, 0.1);
+    0 0 30px rgba(29, 78, 216, 0.2),
+    inset 0 0 30px rgba(29, 78, 216, 0.1);
 }
 
 /* Terminal Styles */
 .terminal {
-  background: rgba(10, 15, 28, 0.95);
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: 8px;
   font-family: 'JetBrains Mono', monospace;
 }
 
 .terminal-header {
-  background: rgba(0, 229, 255, 0.1);
-  border-bottom: 1px solid rgba(0, 229, 255, 0.2);
+  background: rgba(59, 130, 246, 0.1);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.2);
   padding: 8px 12px;
   display: flex;
   align-items: center;
@@ -159,8 +173,8 @@ body {
   align-items: center;
   gap: 6px;
   padding: 6px 12px;
-  background: rgba(0, 229, 255, 0.1);
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: 20px;
   font-size: 12px;
   font-weight: 500;
@@ -169,32 +183,32 @@ body {
 }
 
 .tech-badge:hover {
-  background: rgba(0, 229, 255, 0.2);
-  border-color: rgba(0, 229, 255, 0.4);
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
 }
 
 /* Dashboard Card Styles */
 .dashboard-card {
-  background: rgba(17, 24, 39, 0.6);
-  border: 1px solid rgba(0, 229, 255, 0.15);
+  background: rgba(17, 17, 17, 0.6);
+  border: 1px solid rgba(59, 130, 246, 0.15);
   border-radius: 12px;
   padding: 24px;
   transition: all 0.3s ease;
 }
 
 .dashboard-card:hover {
-  border-color: rgba(0, 229, 255, 0.3);
+  border-color: rgba(59, 130, 246, 0.3);
   box-shadow:
-    0 0 30px rgba(0, 229, 255, 0.1),
-    inset 0 0 30px rgba(0, 229, 255, 0.05);
+    0 0 30px rgba(59, 130, 246, 0.1),
+    inset 0 0 30px rgba(59, 130, 246, 0.05);
   transform: translateY(-2px);
 }
 
 /* Metric Card */
 .metric-card {
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(124, 77, 255, 0.1) 100%);
-  border: 1px solid rgba(0, 229, 255, 0.2);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
   border-radius: 12px;
   padding: 24px;
   text-align: center;
@@ -202,14 +216,14 @@ body {
 }
 
 .metric-card:hover {
-  border-color: rgba(0, 229, 255, 0.4);
-  box-shadow: 0 0 30px rgba(0, 229, 255, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
 }
 
 /* Pipeline Node Styles */
 .pipeline-node {
-  background: rgba(17, 24, 39, 0.9);
-  border: 1px solid rgba(0, 229, 255, 0.3);
+  background: rgba(17, 17, 17, 0.9);
+  border: 1px solid rgba(59, 130, 246, 0.3);
   border-radius: 8px;
   padding: 16px 20px;
   text-align: center;
@@ -218,8 +232,8 @@ body {
 }
 
 .pipeline-node:hover {
-  border-color: rgba(0, 229, 255, 0.6);
-  box-shadow: 0 0 25px rgba(0, 229, 255, 0.3);
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
   transform: scale(1.02);
 }
 
@@ -229,7 +243,7 @@ body {
   inset: -1px;
   border-radius: 8px;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(0, 229, 255, 0.5), rgba(124, 77, 255, 0.5));
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(29, 78, 216, 0.5));
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
@@ -260,26 +274,26 @@ body {
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: #0a0a0a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 229, 255, 0.3);
-  border-radius: 4px;
+  background: #3b82f6;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 229, 255, 0.5);
+  background: #2563eb;
 }
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -290,8 +304,8 @@ body {
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(0, 229, 255, 0.3) 20%,
-    rgba(124, 77, 255, 0.3) 80%,
+    rgba(59, 130, 246, 0.3) 20%,
+    rgba(29, 78, 216, 0.3) 80%,
     transparent 100%
   );
 }
@@ -312,8 +326,8 @@ body {
 
 /* Pulse Glow Animation */
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(0, 229, 255, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(0, 229, 255, 0.6); }
+  0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(59, 130, 246, 0.6); }
 }
 
 .animate-pulse-glow {
@@ -322,8 +336,8 @@ body {
 
 /* Chart Container */
 .chart-container {
-  background: rgba(17, 24, 39, 0.5);
-  border: 1px solid rgba(0, 229, 255, 0.1);
+  background: rgba(17, 17, 17, 0.5);
+  border: 1px solid rgba(59, 130, 246, 0.1);
   border-radius: 8px;
   padding: 16px;
 }

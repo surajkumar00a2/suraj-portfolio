@@ -8,6 +8,7 @@ import Skills from "@/components/Skills";
 import DataPipelineVisualization from "@/components/DataPipelineVisualization";
 import Projects from "@/components/Projects";
 import ExperienceMetrics from "@/components/ExperienceMetrics";
+import WorkExperience from "@/components/WorkExperience";
 import SystemArchitecture from "@/components/SystemArchitecture";
 import GitHubActivity from "@/components/GitHubActivity";
 import Contact from "@/components/Contact";
@@ -78,6 +79,12 @@ export default function Home() {
 
         {/* Projects - Dashboard Style */}
         <Projects />
+
+        {/* Section Divider */}
+        <div className="section-divider" />
+
+        {/* Work Experience */}
+        <WorkExperience />
 
         {/* Section Divider */}
         <div className="section-divider" />

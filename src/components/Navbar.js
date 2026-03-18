@@ -41,7 +41,7 @@ export default function Navbar({ darkMode, toggleTheme }) {
             whileHover={{ scale: 1.05 }}
             className="text-xl font-bold tracking-tight"
           >
-            <span className="text-text">SK</span>
+            <span className="text-slate-100">SK</span>
             <span className="text-primary">.</span>
           </motion.a>
 
@@ -52,7 +52,7 @@ export default function Navbar({ darkMode, toggleTheme }) {
                 key={item.name}
                 href={item.href}
                 whileHover={{ scale: 1.05 }}
-                className="relative px-4 py-2 text-sm font-medium text-text-muted hover:text-text transition-colors group"
+                className="relative px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors group"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary group-hover:w-1/2 transition-all duration-300" />
@@ -64,7 +64,7 @@ export default function Navbar({ darkMode, toggleTheme }) {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={toggleTheme}
-              className="ml-4 p-2 rounded-lg glass glow-border text-text-muted hover:text-text transition-colors"
+              className="ml-4 p-2 rounded-lg glass glow-border text-slate-400 hover:text-slate-100 transition-colors"
               aria-label="Toggle theme"
             >
               <AnimatePresence mode="wait">
@@ -93,14 +93,14 @@ export default function Navbar({ darkMode, toggleTheme }) {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg glass text-text-muted"
+              className="p-2 rounded-lg glass text-slate-400"
               aria-label="Toggle theme"
             >
               {darkMode ? '☀' : '☽'}
             </button>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-lg glass text-text"
+              className="p-2 rounded-lg glass text-slate-100"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -132,7 +132,7 @@ export default function Navbar({ darkMode, toggleTheme }) {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                     onClick={() => setMenuOpen(false)}
-                    className="block py-3 text-lg font-medium text-text hover:text-primary transition-colors border-b border-border last:border-0"
+                    className="block py-3 text-lg font-medium text-slate-100 hover:text-primary transition-colors border-b border-border last:border-0"
                   >
                     {item.name}
                   </motion.a>

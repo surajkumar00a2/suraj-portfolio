@@ -6,7 +6,7 @@ import ScrollReveal from './ui/ScrollReveal';
 import SectionHeader from './ui/SectionHeader';
 
 function SkillCard({ group, index }) {
-  const colors = ['#00e5ff', '#7c4dff', '#00b8d4'];
+  const colors = ['#3b82f6', '#2563eb', '#1d4ed8'];
   const color = colors[index % colors.length];
 
   return (
@@ -27,7 +27,7 @@ function SkillCard({ group, index }) {
         <div
           className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110"
           style={{
-            background: `rgba(${color === '#00e5ff' ? '0, 229, 255' : color === '#7c4dff' ? '124, 77, 255' : '0, 184, 212'}, 0.1)`,
+            background: `rgba(59, 130, 246, 0.1)`,
             color: color,
             boxShadow: `0 0 20px ${color}20`,
           }}
@@ -36,7 +36,7 @@ function SkillCard({ group, index }) {
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-text mb-4 group-hover:text-primary transition-colors">
+        <h3 className="text-lg font-bold text-slate-100 mb-4 group-hover:text-primary transition-colors">
           {group.domain}
         </h3>
 
@@ -49,7 +49,7 @@ function SkillCard({ group, index }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 + i * 0.05 }}
-              className="flex items-start gap-3 text-sm text-text-muted"
+              className="flex items-start gap-3 text-sm text-slate-300"
             >
               <span
                 className="w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0"
@@ -75,7 +75,7 @@ function SkillCard({ group, index }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
+    <section id="skills" className="py-16 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
@@ -98,7 +98,7 @@ export default function Skills() {
         {/* Additional Tools */}
         <ScrollReveal delay={0.5}>
           <div className="mt-16 glass glow-border rounded-xl p-8">
-            <h4 className="text-sm font-medium text-text-muted mb-6 uppercase tracking-wider text-center">Tools & Technologies</h4>
+            <h4 className="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider text-center">Tools & Technologies</h4>
             <div className="flex flex-wrap justify-center gap-3">
               {[
                 'Python', 'SQL', 'dbt', 'Apache Airflow', 'AWS', 'Snowflake',
@@ -120,6 +120,7 @@ export default function Skills() {
             </div>
           </div>
         </ScrollReveal>
+
       </div>
     </section>
   );
