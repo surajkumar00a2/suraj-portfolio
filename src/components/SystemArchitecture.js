@@ -18,32 +18,13 @@ const architectures = [
     stages: [
       { name: 'Source Systems', details: 'APIs, Databases, Files', icon: '📥' },
       { name: 'Ingestion Layer', details: 'Airflow DAGs, Validation', icon: '⚡' },
-      { name: 'Bronze Storage', details: 'Raw data in S3/Parquet', icon: '📦' },
-      { name: 'Silver Transform', details: 'Cleansing with PySpark', icon: '🔧' },
+      { name: 'Bronze Storage', details: 'Raw data in S3', icon: '📦' },
+      { name: 'Silver Transform', details: 'Cleansing with Python', icon: '🔧' },
       { name: 'Gold Analytics', details: 'Business-ready tables', icon: '✨' },
-      { name: 'Consumption', details: 'BI Tools, ML Models', icon: '📊' },
+      { name: 'Consumption', details: 'Looker Studio dashboards', icon: '📊' },
     ],
-    tools: ['Apache Airflow', 'PySpark', 'AWS S3', 'dbt', 'Snowflake'],
-    metrics: { latency: 'Hourly', volume: 'TBs/day', reliability: '99.9%' },
-  },
-  {
-    id: 'streaming',
-    title: 'Real-time Streaming',
-    description: 'Low-latency event processing for real-time analytics and monitoring.',
-    icon: (
-      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-    stages: [
-      { name: 'Event Sources', details: 'IoT, Webhooks, Logs', icon: '🌐' },
-      { name: 'Stream Ingestion', details: 'Kafka/Kinesis topics', icon: '📡' },
-      { name: 'Stream Processing', details: 'Flink/Spark Streaming', icon: '⚙️' },
-      { name: 'Feature Store', details: 'Real-time features', icon: '🗃️' },
-      { name: 'Serving Layer', details: 'APIs, Dashboards', icon: '🚀' },
-    ],
-    tools: ['Apache Kafka', 'AWS Kinesis', 'Flink', 'Redis', 'Elasticsearch'],
-    metrics: { latency: '<100ms', volume: '100K+/sec', reliability: '99.99%' },
+    tools: ['Apache Airflow', 'Python', 'AWS S3', 'dbt', 'PostgreSQL'],
+    metrics: { latency: 'Hourly', sources: '500+', reliability: '99.2%' },
   },
   {
     id: 'quality',
@@ -55,15 +36,13 @@ const architectures = [
       </svg>
     ),
     stages: [
-      { name: 'Schema Registry', details: 'Version control', icon: '📋' },
-      { name: 'Validation Rules', details: 'Great Expectations', icon: '✅' },
-      { name: 'Profiling', details: 'Statistical analysis', icon: '📈' },
-      { name: 'Anomaly Detection', details: 'ML-based alerts', icon: '🔍' },
-      { name: 'Alerting', details: 'Slack, PagerDuty', icon: '🚨' },
-      { name: 'Lineage', details: 'Impact analysis', icon: '🔗' },
+      { name: 'Schema Validation', details: 'Type checking', icon: '📋' },
+      { name: 'Null Checks', details: 'Completeness', icon: '✅' },
+      { name: 'Anomaly Detection', details: 'Z-score flags', icon: '🔍' },
+      { name: 'Alerting', details: 'CloudWatch', icon: '🚨' },
     ],
-    tools: ['Great Expectations', 'Soda Core', 'Monte Carlo', 'Datadog', 'PagerDuty'],
-    metrics: { latency: 'Real-time', coverage: '100%', issues: '-80%' },
+    tools: ['Great Expectations', 'Python', 'AWS CloudWatch'],
+    metrics: { accuracy: '89% → 96%', manual: '-60%', coverage: '500+ sources' },
   },
 ];
 

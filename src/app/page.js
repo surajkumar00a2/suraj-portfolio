@@ -5,12 +5,9 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
-import DataPipelineVisualization from "@/components/DataPipelineVisualization";
 import Projects from "@/components/Projects";
-import ExperienceMetrics from "@/components/ExperienceMetrics";
 import WorkExperience from "@/components/WorkExperience";
 import SystemArchitecture from "@/components/SystemArchitecture";
-import GitHubActivity from "@/components/GitHubActivity";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import AnimatedGridBackground from "@/components/ui/AnimatedGridBackground";
@@ -21,13 +18,26 @@ export default function Home() {
 
   useEffect(() => {
     setMounted(true);
-    // Always use dark mode for the futuristic theme
-    document.documentElement.classList.add("dark");
+    // Check for saved theme preference or default to dark
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setDarkMode(savedTheme === 'dark');
+    } else {
+      document.documentElement.classList.add("dark");
+    }
   }, []);
 
   useEffect(() => {
     if (mounted) {
-      document.documentElement.classList.toggle("dark", darkMode);
+      if (darkMode) {
+        document.documentElement.classList.add("dark");
+        document.documentElement.classList.remove("light");
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.classList.add("light");
+        localStorage.setItem('theme', 'light');
+      }
     }
   }, [darkMode, mounted]);
 
@@ -47,58 +57,34 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="relative z-10">
-        {/* Hero Section - Data Command Center */}
+        {/* Hero Section - Immediate Value Prop */}
         <Hero />
 
-        {/* Section Divider */}
         <div className="section-divider" />
 
-        {/* About Section */}
+        {/* About + Skills Combined Impact */}
         <About />
 
-        {/* Section Divider */}
-        <div className="section-divider" />
-
-        {/* Data Pipeline Visualization */}
-        <DataPipelineVisualization />
-
-        {/* Section Divider */}
         <div className="section-divider" />
 
         {/* Skills Section */}
         <Skills />
 
-        {/* Section Divider */}
         <div className="section-divider" />
 
-        {/* Experience Metrics */}
-        <ExperienceMetrics />
-
-        {/* Section Divider */}
-        <div className="section-divider" />
-
-        {/* Projects - Dashboard Style */}
+        {/* Featured Projects */}
         <Projects />
 
-        {/* Section Divider */}
         <div className="section-divider" />
 
         {/* Work Experience */}
         <WorkExperience />
 
-        {/* Section Divider */}
         <div className="section-divider" />
 
         {/* System Architecture */}
         <SystemArchitecture />
 
-        {/* Section Divider */}
-        <div className="section-divider" />
-
-        {/* GitHub Activity */}
-        <GitHubActivity />
-
-        {/* Section Divider */}
         <div className="section-divider" />
 
         {/* Contact Section */}

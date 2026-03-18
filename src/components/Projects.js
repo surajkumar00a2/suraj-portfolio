@@ -2,77 +2,9 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import {
-  LineChart,
-  Line,
-  AreaChart,
-  Area,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-} from 'recharts';
 import projects from '@/data/projects';
 import ScrollReveal from './ui/ScrollReveal';
 import SectionHeader from './ui/SectionHeader';
-
-// Sample data for charts
-const generateChartData = (points = 7) => {
-  return Array.from({ length: points }, (_, i) => ({
-    name: `Day ${i + 1}`,
-    value: Math.floor(Math.random() * 5000) + 1000,
-    throughput: Math.floor(Math.random() * 100) + 50,
-  }));
-};
-
-const chartColors = {
-  primary: '#3b82f6',
-  accent: '#2563eb',
-  grid: 'rgba(59, 130, 246, 0.1)',
-};
-
-function MiniChart({ type = 'line', color = chartColors.primary }) {
-  const data = generateChartData(7);
-
-  const ChartComponent = type === 'area' ? AreaChart : LineChart;
-  const DataComponent = type === 'area' ? Area : Line;
-
-  return (
-    <div className="h-24 w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <ChartComponent data={data}>
-          <defs>
-            <linearGradient id={`gradient-${type}`} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor={color} stopOpacity={0.3} />
-              <stop offset="95%" stopColor={color} stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke={chartColors.grid} />
-          <XAxis dataKey="name" hide />
-          <YAxis hide />
-          <Tooltip
-            contentStyle={{
-              backgroundColor: '#111111',
-              border: '1px solid rgba(59, 130, 246, 0.2)',
-              borderRadius: '8px',
-              fontSize: '12px',
-            }}
-            itemStyle={{ color: color }}
-          />
-          <DataComponent
-            type="monotone"
-            dataKey="value"
-            stroke={color}
-            strokeWidth={2}
-            fill={type === 'area' ? `url(#gradient-${type})` : 'none'}
-            dot={false}
-          />
-        </ChartComponent>
-      </ResponsiveContainer>
-    </div>
-  );
-}
 
 function ProjectModal({ project, onClose }) {
   return (
@@ -194,15 +126,59 @@ function ProjectModal({ project, onClose }) {
   );
 }
 
+function FeaturedProjectCard({ project, onClick }) {
+  return (
+    <ScrollReveal>
+      <motion.div
+        whileHover={{ y: -5 }}
+        onClick={onClick}
+        className="dashboard-card group cursor-pointer relative overflow-hidden border-2 border-primary/30"
+      >
+        {/* Featured Badge */}
+        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/20 border border-primary/40 text-primary text-xs font-semibold">
+          ★ Featured
+        </div>
+
+        {/* Header */}
+        <div className="mb-4">
+          <h3 className="text-xl font-bold text-slate-100 group-hover:text-primary transition-colors mb-2">
+            {project.title}
+          </h3>
+          <p className="text-sm text-slate-300 line-clamp-2">{project.description}</p>
+        </div>
+
+        {/* Key Achievements */}
+        <div className="space-y-2 mb-4">
+          {project.achievements.slice(0, 3).map((achievement, i) => (
+            <div key={i} className="glass rounded-lg p-3 border-l-2 border-primary">
+              <p className="text-sm text-slate-300">
+                <span className="text-primary">↳</span> {achievement}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2">
+          {project.stack.map((tech) => (
+            <span
+              key={tech}
+              className="px-2 py-1 rounded text-xs font-mono bg-background-light text-slate-400 border border-border"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Hover indicator */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+      </motion.div>
+    </ScrollReveal>
+  );
+}
+
 function ProjectCard({ project, index }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Generate random metrics for each project
-  const metrics = {
-    rowsProcessed: ['10M+', '5M+', '2M+', '1M+'][index % 4],
-    latency: ['1.2s', '2.5s', '0.8s', '3.1s'][index % 4],
-    reliability: ['99.8%', '99.5%', '99.9%', '99.2%'][index % 4],
-  };
 
   return (
     <>
@@ -229,30 +205,19 @@ function ProjectCard({ project, index }) {
             </div>
           </div>
 
-          {/* Metrics Row */}
-          <div className="grid grid-cols-3 gap-3 mb-4">
-            <div className="glass rounded-lg p-2 text-center">
-              <div className="text-xs text-slate-400">Rows</div>
-              <div className="text-sm font-semibold text-primary">{metrics.rowsProcessed}</div>
-            </div>
-            <div className="glass rounded-lg p-2 text-center">
-              <div className="text-xs text-slate-400">Latency</div>
-              <div className="text-sm font-semibold text-accent">{metrics.latency}</div>
-            </div>
-            <div className="glass rounded-lg p-2 text-center">
-              <div className="text-xs text-slate-400">Uptime</div>
-              <div className="text-sm font-semibold text-emerald-400">{metrics.reliability}</div>
-            </div>
-          </div>
-
-          {/* Mini Chart */}
-          <div className="mb-4">
-            <MiniChart type={index % 2 === 0 ? 'area' : 'line'} color={index % 2 === 0 ? chartColors.primary : chartColors.accent} />
+          {/* Key Achievements */}
+          <div className="space-y-2 mb-4">
+            {project.achievements.slice(0, 2).map((achievement, i) => (
+              <div key={i} className="flex items-start gap-2">
+                <span className="text-primary mt-0.5">↳</span>
+                <p className="text-sm text-slate-400 line-clamp-2">{achievement}</p>
+              </div>
+            ))}
           </div>
 
           {/* Tech Stack */}
           <div className="flex flex-wrap gap-1.5">
-            {project.stack.slice(0, 4).map((tech) => (
+            {project.stack.map((tech) => (
               <span
                 key={tech}
                 className="px-2 py-0.5 rounded text-[10px] font-mono bg-background-light text-slate-400 border border-border"
@@ -260,12 +225,6 @@ function ProjectCard({ project, index }) {
                 {tech}
               </span>
             ))}
-            {project.stack.length > 4 && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-background-light text-slate-400 border border-border"
-              >
-                +{project.stack.length - 4}
-              </span>
-            )}
           </div>
 
           {/* Hover indicator */}
@@ -281,20 +240,67 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
+  const [showOtherProjects, setShowOtherProjects] = useState(false);
+  const featuredProjects = projects.slice(0, 2);
+  const otherProjects = projects.slice(2);
+
   return (
     <section id="projects" className="py-16 relative overflow-hidden">
       <div className="relative z-10 max-w-content mx-auto px-6">
         <SectionHeader
           label="Portfolio"
           title="Featured Projects"
-          description="Production-grade data engineering projects with real-time metrics and performance dashboards."
+          description="Production-grade data engineering projects with measurable business impact."
         />
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+        {/* Featured Projects - 2 Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {featuredProjects.map((project) => (
+            <FeaturedProjectCard
+              key={project.id}
+              project={project}
+              onClick={() => window.open(project.liveDashboard || project.github, '_blank')}
+            />
           ))}
         </div>
+
+        {/* Other Projects Toggle */}
+        <div className="text-center">
+          <button
+            onClick={() => setShowOtherProjects(!showOtherProjects)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg glass glow-border text-slate-300 hover:text-primary transition-colors"
+          >
+            <span>{showOtherProjects ? 'Hide' : 'Show'} Other Projects</span>
+            <motion.svg
+              animate={{ rotate: showOtherProjects ? 180 : 0 }}
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </motion.svg>
+          </button>
+        </div>
+
+        {/* Other Projects - Collapsible */}
+        <AnimatePresence>
+          {showOtherProjects && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                {otherProjects.map((project, index) => (
+                  <ProjectCard key={project.id} project={project} index={index} />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

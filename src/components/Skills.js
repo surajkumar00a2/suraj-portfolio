@@ -95,32 +95,6 @@ export default function Skills() {
           ))}
         </div>
 
-        {/* Additional Tools */}
-        <ScrollReveal delay={0.5}>
-          <div className="mt-16 glass glow-border rounded-xl p-8">
-            <h4 className="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wider text-center">Tools & Technologies</h4>
-            <div className="flex flex-wrap justify-center gap-3">
-              {[
-                'Python', 'SQL', 'dbt', 'Apache Airflow', 'AWS', 'Snowflake',
-                'PostgreSQL', 'PySpark', 'Docker', 'Git', 'Looker', 'Tableau',
-                'Pandas', 'NumPy', 'Great Expectations', 'Terraform',
-              ].map((tool, index) => (
-                <motion.span
-                  key={tool}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.6 + index * 0.03 }}
-                  whileHover={{ scale: 1.1 }}
-                  className="px-4 py-2 rounded-full text-sm font-medium bg-background-light border border-border hover:border-primary/50 hover:text-primary transition-all cursor-default"
-                >
-                  {tool}
-                </motion.span>
-              ))}
-            </div>
-          </div>
-        </ScrollReveal>
-
       </div>
     </section>
   );

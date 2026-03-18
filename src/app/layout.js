@@ -15,8 +15,6 @@ export const metadata = {
     "Dimensional Modeling",
     "Revenue Analytics",
     "Supabase",
-    "PySpark",
-    "Snowflake",
     "Airflow",
     "Python",
   ],

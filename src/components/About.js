@@ -29,34 +29,6 @@ export default function About() {
               title="Background"
               description={profile.summary}
             />
-
-            {/* Skills Tags */}
-            <ScrollReveal delay={0.3}>
-              <div className="mt-8">
-                <h4 className="text-sm font-medium text-slate-400 mb-4 uppercase tracking-wider">Core Expertise</h4>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    'ETL/ELT Pipelines',
-                    'Dimensional Modeling',
-                    'Data Quality',
-                    'Cloud Architecture',
-                    'Analytics Engineering',
-                    'Revenue Analytics',
-                  ].map((skill, index) => (
-                    <motion.span
-                      key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: 0.4 + index * 0.05 }}
-                      className="tech-badge"
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
           </div>
 
           {/* Right Column - Stats Grid */}
