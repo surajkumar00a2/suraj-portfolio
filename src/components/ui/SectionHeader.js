@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import ScrollReveal from './ScrollReveal';
 
 export default function SectionHeader({ label, title, description, align = 'left' }) {
   const alignClasses = {
@@ -12,22 +11,33 @@ export default function SectionHeader({ label, title, description, align = 'left
 
   return (
     <div className={`${alignClasses[align]} max-w-2xl mb-12`}>
-      <ScrollReveal>
-        <p className="font-mono text-xs font-medium text-[#3b82f6] uppercase tracking-widest mb-3">
-          {label}
-        </p>
-      </ScrollReveal>
-      <ScrollReveal delay={0.1}>
-        <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4 gradient-text">
-          {title}
-        </h2>
-      </ScrollReveal>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="font-mono text-xs font-medium text-primary uppercase tracking-widest mb-3"
+      >
+        {label}
+      </motion.p>
+      <motion.h2
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className="text-2xl md:text-3xl font-bold tracking-tight text-zinc-100 mb-4"
+      >
+        {title}
+      </motion.h2>
       {description && (
-        <ScrollReveal delay={0.2}>
-          <p className="text-slate-300 leading-relaxed">
-            {description}
-          </p>
-        </ScrollReveal>
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="text-zinc-400 leading-relaxed"
+        >
+          {description}
+        </motion.p>
       )}
     </div>
   );
