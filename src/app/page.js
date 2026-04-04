@@ -10,9 +10,15 @@ import WorkExperience from "@/components/WorkExperience";
 import SystemArchitecture from "@/components/SystemArchitecture";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import PipelineBackground from "@/components/ui/PipelineBackground";
+import PipelineConnector from "@/components/ui/PipelineConnector";
+import profile from "@/data/profile";
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [activeRole, setActiveRole] = useState(
+    profile.roles.find((r) => r.id === profile.defaultRole) || profile.roles[0]
+  );
 
   useEffect(() => {
     setMounted(true);
@@ -24,22 +30,23 @@ export default function Home() {
 
   return (
     <>
+      <PipelineBackground />
       <Navbar />
 
-      <main className="relative">
-        <Hero />
-        <div className="section-divider" />
-        <About />
-        <div className="section-divider" />
+      <main className="relative z-10">
+        <Hero activeRole={activeRole} setActiveRole={setActiveRole} />
+        <PipelineConnector />
+        <About activeRole={activeRole} />
+        <PipelineConnector />
         <Skills />
-        <div className="section-divider" />
+        <PipelineConnector />
         <Projects />
-        <div className="section-divider" />
+        <PipelineConnector />
         <WorkExperience />
-        <div className="section-divider" />
+        <PipelineConnector />
         <SystemArchitecture />
-        <div className="section-divider" />
-        <Contact />
+        <PipelineConnector />
+        <Contact activeRole={activeRole} />
       </main>
 
       <Footer />

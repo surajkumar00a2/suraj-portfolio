@@ -161,6 +161,7 @@ export default function Projects() {
           label="Portfolio"
           title="Featured Projects"
           description="Production-grade data engineering projects with measurable business impact."
+          stage="03"
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">

@@ -37,7 +37,7 @@ const links = [
   },
 ];
 
-export default function Contact() {
+export default function Contact({ activeRole }) {
   return (
     <section id="contact" className="py-20">
       <div className="max-w-content mx-auto px-6">
@@ -47,6 +47,7 @@ export default function Contact() {
             title="Let's Connect"
             description="Open to Senior Data Analyst, Analytics Engineer, and Data Engineer roles — remote, hybrid, or on-site globally."
             align="center"
+            stage="06"
           />
         </div>
 
@@ -57,8 +58,8 @@ export default function Contact() {
           className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3"
         >
           <a
-            href={profile.resumePath}
-            download="Suraj_Kumar_Resume.pdf"
+            href={activeRole.resumePath}
+            download={`Suraj_Kumar_Resume_${activeRole.label.replace(/\s+/g, '_')}.pdf`}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-zinc-900 font-medium text-sm hover:bg-primary-dark transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

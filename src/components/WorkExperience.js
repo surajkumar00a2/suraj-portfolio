@@ -40,6 +40,7 @@ export default function WorkExperience() {
           title="Work History"
           description="Professional experience building data products at scale."
           align="center"
+          stage="04"
         />
 
         <div className="mt-12 space-y-6">

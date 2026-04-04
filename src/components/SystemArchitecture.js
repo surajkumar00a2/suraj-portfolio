@@ -128,6 +128,7 @@ export default function SystemArchitecture() {
           title="Architectures"
           description="Production-ready data architectures designed for scale, reliability, and maintainability."
           align="center"
+          stage="05"
         />
 
         <div className="mt-12 grid gap-4">

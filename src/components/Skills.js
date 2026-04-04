@@ -36,6 +36,7 @@ export default function Skills() {
           title="Technical Skills"
           description="Full-stack analytics engineering — from raw data ingestion to decision-ready outputs."
           align="center"
+          stage="02"
         />
 
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
