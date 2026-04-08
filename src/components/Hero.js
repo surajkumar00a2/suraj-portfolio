@@ -12,28 +12,34 @@ const pipelineStages = [
 
 export default function Hero({ activeRole, setActiveRole }) {
   return (
-    <section className="min-h-[calc(100vh-56px)] flex items-center justify-center py-20 relative z-10">
-      <div className="max-w-content mx-auto px-6 w-full">
-        <div className="text-center space-y-8">
+    <section className="min-h-[calc(100vh-56px)] flex items-center justify-center py-20 relative z-10 overflow-hidden">
+      {/* Radial Gradient Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] opacity-50" />
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[100px] opacity-40" />
+      </div>
+
+      <div className="max-w-content mx-auto px-6 w-full relative z-20">
+        <div className="text-center space-y-12">
           {/* Role Toggle Pills */}
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
-            className="flex items-center justify-center gap-2 flex-wrap"
+            className="flex items-center justify-center gap-3 flex-wrap"
           >
             {profile.roles.map((role) => (
               <button
                 key={role.id}
                 onClick={() => setActiveRole(role)}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-4 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
                   activeRole.id === role.id
-                    ? 'bg-cyan-500/10 border border-cyan-400/50 text-cyan-300 shadow-[0_0_15px_rgba(34,211,238,0.15)]'
-                    : 'border border-slate-700/50 text-slate-500 hover:border-slate-600 hover:text-slate-400'
+                    ? 'glass border-primary/50 text-zinc-100 shadow-[0_0_15px_rgba(59,130,246,0.15)] scale-105'
+                    : 'border border-white/10 text-zinc-500 hover:border-white/20 hover:text-zinc-300 hover:scale-105'
                 }`}
               >
                 {activeRole.id === role.id && (
-                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2 shadow-[0_0_6px_rgba(34,211,238,0.6)]" />
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-primary mr-2 shadow-[0_0_6px_var(--glow-cyan)]" />
                 )}
                 {role.label}
               </button>
@@ -45,11 +51,11 @@ export default function Hero({ activeRole, setActiveRole }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2.5 text-sm text-slate-400 px-4 py-1.5 rounded-full border border-cyan-500/20 bg-cyan-500/5"
+            className="inline-flex items-center gap-2.5 text-xs font-medium text-zinc-400 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm"
           >
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
             </span>
             Available for opportunities
           </motion.div>
@@ -59,9 +65,9 @@ export default function Hero({ activeRole, setActiveRole }) {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="space-y-4"
+            className="space-y-6"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight">
               <span className="text-white">{profile.name.split(' ')[0]}</span>{' '}
               <span className="gradient-text">{profile.name.split(' ')[1]}</span>
             </h1>
@@ -72,7 +78,7 @@ export default function Hero({ activeRole, setActiveRole }) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -6 }}
                 transition={{ duration: 0.25 }}
-                className="text-lg md:text-xl font-mono text-slate-400"
+                className="text-xl md:text-2xl font-medium text-zinc-300"
               >
                 {activeRole.title}
               </motion.p>
@@ -87,7 +93,7 @@ export default function Hero({ activeRole, setActiveRole }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.25 }}
-              className="text-slate-400 max-w-xl mx-auto leading-relaxed"
+              className="text-zinc-400 max-w-2xl mx-auto text-lg leading-relaxed"
             >
               {activeRole.tagline}
             </motion.p>
@@ -98,7 +104,7 @@ export default function Hero({ activeRole, setActiveRole }) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="pt-6 pb-2"
+            className="pt-8 pb-4"
           >
             <div className="inline-flex items-center gap-0 flex-wrap justify-center">
               {pipelineStages.map((stage, i) => (
@@ -109,13 +115,13 @@ export default function Hero({ activeRole, setActiveRole }) {
                     transition={{ delay: 0.6 + i * 0.12 }}
                     className="pipeline-node-hero group"
                   >
-                    <span className="text-lg font-mono text-cyan-400/60 group-hover:text-cyan-300 transition-colors relative z-10">
+                    <span className="text-lg font-mono text-primary/60 group-hover:text-primary transition-colors relative z-10">
                       {stage.icon}
                     </span>
-                    <span className="text-xs font-medium text-slate-200 mt-1 relative z-10">
+                    <span className="text-xs font-medium text-zinc-200 mt-1 relative z-10">
                       {stage.label}
                     </span>
-                    <span className="text-[10px] text-slate-500 font-mono relative z-10">
+                    <span className="text-[10px] text-zinc-500 font-mono relative z-10">
                       {stage.desc}
                     </span>
                   </motion.div>
@@ -140,11 +146,11 @@ export default function Hero({ activeRole, setActiveRole }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="flex flex-wrap gap-3 justify-center pt-2"
+            className="flex flex-wrap gap-4 justify-center pt-4"
           >
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-md bg-gradient-to-r from-cyan-500 to-cyan-400 text-slate-900 font-semibold text-sm hover:shadow-[0_0_25px_rgba(34,211,238,0.3)] transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-bold text-sm hover:scale-105 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] active:scale-95 transition-all duration-300 shadow-lg shadow-primary/20"
             >
               View Projects
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -155,13 +161,13 @@ export default function Hero({ activeRole, setActiveRole }) {
               href={activeRole.resumePath}
               target="_blank"
               rel="noopener"
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-md border border-cyan-500/25 text-slate-200 font-medium text-sm hover:border-cyan-400/50 hover:shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full glass border-white/10 text-zinc-200 font-medium text-sm hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-300"
             >
               Resume
             </a>
             <a
               href={`mailto:${profile.email}`}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-md border border-purple-500/25 text-slate-200 font-medium text-sm hover:border-purple-400/50 hover:shadow-[0_0_20px_rgba(167,139,250,0.1)] transition-all duration-300"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full glass border-white/10 text-zinc-200 font-medium text-sm hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-300"
             >
               Contact
             </a>

@@ -30,22 +30,24 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.4 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'glass-strong' : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? 'glass py-2 border-b border-white/10 shadow-sm'
+            : 'bg-transparent py-4'
         }`}
       >
         <div className="max-w-content mx-auto px-6 h-14 flex items-center justify-between">
-          <a href="#" className="text-lg font-semibold tracking-tight text-zinc-100">
+          <a href="#" className="text-xl font-bold tracking-tighter text-zinc-100 transition-opacity hover:opacity-80">
             SK<span className="text-primary">.</span>
           </a>
 
           {/* Desktop */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="px-3 py-1.5 text-sm text-zinc-500 hover:text-zinc-100 transition-colors"
+                className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-zinc-100 rounded-full transition-all duration-300 hover:bg-white/5 hover:scale-105 active:scale-95"
               >
                 {item.name}
               </a>
@@ -55,7 +57,7 @@ export default function Navbar() {
           {/* Mobile */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 text-zinc-400"
+            className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
             aria-label="Toggle menu"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -74,15 +76,15 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden glass-strong border-t border-border"
+              className="md:hidden glass border-t border-white/10"
             >
-              <div className="px-6 py-3 space-y-1">
+              <div className="px-6 py-6 space-y-2">
                 {navItems.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block py-2.5 text-sm text-zinc-300 hover:text-primary transition-colors"
+                    className="block py-3 text-base font-medium text-zinc-400 hover:text-primary transition-all duration-300 hover:translate-x-1"
                   >
                     {item.name}
                   </a>

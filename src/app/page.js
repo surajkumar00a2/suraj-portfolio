@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
+import Metrics from "@/components/Metrics";
 import Projects from "@/components/Projects";
 import WorkExperience from "@/components/WorkExperience";
 import SystemArchitecture from "@/components/SystemArchitecture";
@@ -39,6 +40,8 @@ export default function Home() {
         <About activeRole={activeRole} />
         <PipelineConnector />
         <Skills />
+        <PipelineConnector />
+        <Metrics />
         <PipelineConnector />
         <Projects />
         <PipelineConnector />

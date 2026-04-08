@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import projects from '@/data/projects';
 import SectionHeader from './ui/SectionHeader';
+import ProjectSlider from './ProjectSlider';
 
 function ProjectModal({ project, onClose }) {
   return (
@@ -40,26 +41,45 @@ function ProjectModal({ project, onClose }) {
           </div>
 
           <div className="p-6 space-y-6">
-            <div>
-              <h4 className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">Technologies</h4>
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map((tech) => (
-                  <span key={tech} className="tech-badge">{tech}</span>
-                ))}
+            {project.title === 'Enterprise Revenue Intelligence Platform' ? (
+              <div className="space-y-8">
+                <ProjectSlider project={project} />
+                <a
+                  href="https://lookerstudio.google.com/reporting/fae2317d-afb3-4b33-a465-373323f13600"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-zinc-900 font-bold text-sm hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/20 w-full"
+                >
+                  View Full Dashboard
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
               </div>
-            </div>
+            ) : (
+              <>
+                <div>
+                  <h4 className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">Technologies</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.stack.map((tech) => (
+                      <span key={tech} className="tech-badge">{tech}</span>
+                    ))}
+                  </div>
+                </div>
 
-            <div>
-              <h4 className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">Key Achievements</h4>
-              <ul className="space-y-2">
-                {project.achievements.map((achievement, i) => (
-                  <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
-                    <span className="text-primary mt-0.5">-</span>
-                    {achievement}
-                  </li>
-                ))}
-              </ul>
-            </div>
+                <div>
+                  <h4 className="text-xs font-medium text-zinc-500 uppercase tracking-wider mb-3">Key Achievements</h4>
+                  <ul className="space-y-2">
+                    {project.achievements.map((achievement, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-zinc-400">
+                        <span className="text-primary mt-0.5">-</span>
+                        {achievement}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            )}
 
             <div className="flex gap-3 pt-4 border-t border-border">
               {project.liveDashboard && (
@@ -96,49 +116,67 @@ function ProjectModal({ project, onClose }) {
   );
 }
 
-function ProjectCard({ project, index, featured }) {
+function ProjectCard({ project, index, featured, className = '' }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleClick = () => {
+    if (project.title === 'Enterprise Revenue Intelligence Platform') return;
+    setIsModalOpen(true);
+  };
 
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: index * 0.1 }}
-        onClick={() => setIsModalOpen(true)}
-        className="p-5 rounded-lg border border-border hover:border-primary/20 transition-colors cursor-pointer group"
+        whileHover={{ y: -5 }}
+        onClick={handleClick}
+        className={`relative overflow-hidden rounded-2xl border border-white/10 glass cursor-pointer group ${className}`}
       >
-        <div className="flex items-start justify-between mb-3">
-          <div>
-            <h3 className="text-base font-semibold text-zinc-100 group-hover:text-primary transition-colors">
-              {project.title}
-            </h3>
-            <p className="text-sm text-zinc-500 mt-1 line-clamp-2">{project.description}</p>
-          </div>
-          {featured && (
-            <span className="text-xs text-primary font-mono flex-shrink-0 ml-2">featured</span>
-          )}
-        </div>
+        {/* Hover Background Glow */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-        <div className="space-y-1.5 mb-4">
-          {project.achievements.slice(0, 2).map((achievement, i) => (
-            <p key={i} className="text-sm text-zinc-500 flex items-start gap-2">
-              <span className="text-primary">-</span>
-              <span className="line-clamp-1">{achievement}</span>
+        <div className="p-6 h-full flex flex-col justify-between relative z-10">
+          <div className="space-y-3">
+            <div className="flex items-start justify-between">
+              <h3 className="text-lg font-bold text-zinc-100 group-hover:text-primary transition-colors duration-300">
+                {project.title}
+              </h3>
+              {featured && (
+                <span className="text-[10px] uppercase tracking-widest text-primary font-mono bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">
+                  Featured
+                </span>
+              )}
+            </div>
+            <p className="text-sm text-zinc-400 line-clamp-3 group-hover:text-zinc-300 transition-colors duration-300">
+              {project.description}
             </p>
-          ))}
-        </div>
+          </div>
 
-        <div className="flex flex-wrap gap-1.5">
-          {project.stack.map((tech) => (
-            <span
-              key={tech}
-              className="px-2 py-0.5 rounded text-[10px] font-mono text-zinc-500 border border-zinc-800"
-            >
-              {tech}
-            </span>
-          ))}
+          <div className="mt-6 space-y-4">
+            <div className="flex flex-wrap gap-2">
+              {project.stack.slice(0, 3).map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2 py-0.5 rounded-full text-[10px] font-mono text-zinc-400 border border-white/10 bg-white/5"
+                >
+                  {tech}
+                </span>
+              ))}
+              {project.stack.length > 3 && (
+                <span className="text-[10px] text-zinc-500 font-mono">+{project.stack.length - 3} more</span>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2 text-xs font-medium text-zinc-500 group-hover:text-primary transition-colors duration-300">
+              <span>View Details</span>
+              <svg className="w-3 h-3 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
         </div>
       </motion.div>
 
@@ -151,8 +189,9 @@ function ProjectCard({ project, index, featured }) {
 
 export default function Projects() {
   const [showOtherProjects, setShowOtherProjects] = useState(false);
-  const featuredProjects = projects.slice(0, 2);
-  const otherProjects = projects.slice(2);
+
+  const bentoProjects = projects.slice(0, 3);
+  const otherProjects = projects.slice(3);
 
   return (
     <section id="projects" className="py-20">
@@ -164,10 +203,59 @@ export default function Projects() {
           stage="03"
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} featured />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 md:grid-rows-2 gap-4 mb-8">
+          {bentoProjects.map((project, index) => {
+            const sizeClass =
+              index === 0 ? 'md:col-span-2 md:row-span-2' :
+              index === 1 ? 'md:col-span-1 md:row-span-1' :
+              'md:col-span-1 md:row-span-1';
+
+            if (project.title === 'Enterprise Revenue Intelligence Platform') {
+              return (
+                <motion.div
+                  key={project.id}
+                  className={`relative ${sizeClass} space-y-4 rounded-2xl border border-white/10 glass p-6 group`}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h3 className="text-lg font-bold text-zinc-100 group-hover:text-primary transition-colors duration-300">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-zinc-400 mt-1 line-clamp-2">{project.description}</p>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest text-primary font-mono bg-primary/10 px-2 py-0.5 rounded-full border border-primary/20">
+                      Featured
+                    </span>
+                  </div>
+
+                  <div className="space-y-4">
+                    <ProjectSlider project={project} />
+                    <a
+                      href="https://lookerstudio.google.com/reporting/fae2317d-afb3-4b33-a465-373323f13600"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-zinc-900 font-bold text-sm hover:bg-primary-dark transition-all duration-300 shadow-lg shadow-primary/20 w-full"
+                    >
+                      View Full Dashboard
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </motion.div>
+              );
+            }
+
+            return (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                index={index}
+                featured={index < 2}
+                className={sizeClass}
+              />
+            );
+          })}
         </div>
 
         {otherProjects.length > 0 && (
@@ -175,7 +263,7 @@ export default function Projects() {
             <div className="text-center">
               <button
                 onClick={() => setShowOtherProjects(!showOtherProjects)}
-                className="inline-flex items-center gap-2 px-4 py-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm text-zinc-500 hover:text-zinc-300 transition-all duration-300 border border-white/5 hover:border-white/10 bg-white/5 backdrop-blur-sm"
               >
                 {showOtherProjects ? 'Hide' : 'Show'} other projects
                 <motion.svg
@@ -199,9 +287,9 @@ export default function Projects() {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                     {otherProjects.map((project, index) => (
-                      <ProjectCard key={project.id} project={project} index={index} />
+                      <ProjectCard key={project.id} project={project} index={index + 3} />
                     ))}
                   </div>
                 </motion.div>

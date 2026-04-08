@@ -11,38 +11,45 @@ function SkillCard({ group, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      className="p-6 rounded-lg border border-border hover:border-primary/20 transition-colors"
+      className="p-8 rounded-2xl border border-white/10 glass group hover:border-primary/30 transition-all duration-300"
     >
-      <div className="text-primary text-lg mb-1">{group.icon}</div>
-      <h3 className="text-base font-semibold text-zinc-100 mb-4">{group.domain}</h3>
-      <ul className="space-y-2">
+      <div className="flex items-center gap-3 mb-6">
+        <div className="text-primary text-2xl">{group.icon}</div>
+        <h3 className="text-lg font-bold text-zinc-100">{group.domain}</h3>
+      </div>
+      <div className="flex flex-wrap gap-2">
         {group.skills.map((skill) => (
-          <li key={skill} className="flex items-start gap-2 text-sm text-zinc-400">
-            <span className="w-1 h-1 rounded-full bg-zinc-600 mt-2 flex-shrink-0" />
+          <span
+            key={skill}
+            className="px-3 py-1 rounded-full text-xs font-medium text-zinc-400 border border-white/10 bg-white/5 hover:text-zinc-100 hover:border-primary/50 transition-all duration-300 cursor-default"
+          >
             {skill}
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
     </motion.div>
   );
 }
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20">
+    <section id="skills" className="py-32">
       <div className="max-w-content mx-auto px-6">
-        <SectionHeader
-          label="Capabilities"
-          title="Technical Skills"
-          description="Full-stack analytics engineering — from raw data ingestion to decision-ready outputs."
-          align="center"
-          stage="02"
-        />
+        <div className="grid lg:grid-cols-3 gap-12 items-start">
+          <div className="lg:col-span-1">
+            <SectionHeader
+              label="Capabilities"
+              title="Technical Skills"
+              description="Full-stack analytics engineering — from raw data ingestion to decision-ready outputs."
+              stage="02"
+            />
+          </div>
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {skillGroups.map((group, index) => (
-            <SkillCard key={group.domain} group={group} index={index} />
-          ))}
+          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {skillGroups.map((group, index) => (
+              <SkillCard key={group.domain} group={group} index={index} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
