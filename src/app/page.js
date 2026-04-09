@@ -7,6 +7,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Metrics from "@/components/Metrics";
 import Projects from "@/components/Projects";
+import Ventures from "@/components/Ventures";
 import WorkExperience from "@/components/WorkExperience";
 import SystemArchitecture from "@/components/SystemArchitecture";
 import Contact from "@/components/Contact";
@@ -44,6 +45,8 @@ export default function Home() {
         <Metrics />
         <PipelineConnector />
         <Projects />
+        <PipelineConnector />
+        <Ventures />
         <PipelineConnector />
         <WorkExperience />
         <PipelineConnector />
